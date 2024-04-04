@@ -7,9 +7,18 @@
     <title>Calorie Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Reset */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #b2ebf2; /* Slightly darker shade of blue */
+            background-color: #b2ebf2;
             margin: 0;
             padding: 0;
             transition: background-color 0.3s ease-in-out;
@@ -53,7 +62,7 @@
 
         .start-button:hover,
         .calculate-button:hover {
-            background-color: #001f3f; /* Darker shade of navy */
+            background-color: #001f3f;
         }
 
         .calculator-container {
@@ -154,8 +163,8 @@
         /* Style for the image container */
         .image-container {
             width: 50%;
-            left: 50%;
-            /* Adjust the width as needed */
+            margin: 0 auto;
+            text-align: center;
         }
     </style>
 </head>
@@ -167,7 +176,7 @@
         <!-- Image container -->
         <div class="image-container">
             <!-- Add the image of the fist below the title -->
-            <center><<img src="images/download-removebg-preview.png" alt="Fist" style="width: 250px; height: auto;">
+            <img src="images/download-removebg-preview.png" alt="Fist" style="width: 250px; height: auto;">
             <!-- End of image addition -->
         </div>
         <button class="start-button" onclick="showCalculator()">Start</button>
@@ -210,14 +219,13 @@
                 </select>
             </div>
 
-            <right><div class="button-group">
+            <div class="button-group">
                 <button class="calculate-button" type="button" onclick="calculateCalories()">Calculate</button>
-                <right><button class="next-page-button" type="button" style="display: none;" onclick="goToNextPage()">Next Page</button></right>
+                <button class="next-page-button" type="button" style="display: none;" onclick="goToNextPage()">Next Page</button>
             </div>
             <div id="result" class="result"></div>
 
-            <div class="food
-            -suggestions" id="foodSuggestions"></div>
+            <div class="food-suggestions" id="foodSuggestions"></div>
         </form>
     </div>
 
@@ -239,7 +247,6 @@
                 'Quinoa salad with chickpeas and mixed greens',
                 'Baked chicken breast with quinoa and asparagus',
                 'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
             ],
             'midWeightLoss': [
                 'Greek yogurt with berries and granola',
@@ -250,7 +257,6 @@
                 'Quinoa salad with chickpeas and mixed greens',
                 'Baked chicken breast with quinoa and asparagus',
                 'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
             ],
             'normalWeightLoss': [
                 'Egg white omelette with spinach and mushrooms',
@@ -258,7 +264,6 @@
                 'Quinoa salad with chickpeas and mixed greens',
                 'Baked chicken breast with quinoa and asparagus',
                 'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
             ],
             'extremeWeightLoss': [
                 'Vegetable soup with lean protein (chicken, tofu)',
@@ -266,7 +271,6 @@
                 'Lean turkey chili with beans and vegetables',
                 'Salad with grilled turkey breast and light vinaigrette',
                 'Cabbage and carrot slaw with grilled chicken',
-                // Add more recommendations here
             ]
         };
 
@@ -282,7 +286,6 @@
             var weight = parseFloat(document.getElementById('weight').value);
             var activityLevel = parseFloat(document.getElementById('activityLevel').value);
 
-            // Updated BMR calculation
             var bmr = (sex === 'male') ? 10 * weight + 6.25 * height - 5 * age + 5 : 10 * weight + 6.25 * height - 5 * age - 161;
 
             var tdee = bmr * activityLevel;
@@ -300,7 +303,6 @@
             var foodSuggestionsElement = document.getElementById('foodSuggestions');
             foodSuggestionsElement.innerHTML = '';
 
-            // Food recommendations
             var foodRecommendationsHTML = '';
             for (const goal in foodRecommendations) {
                 foodRecommendationsHTML += `<p>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</p><ul>`;
@@ -312,11 +314,9 @@
 
             foodSuggestionsElement.innerHTML = foodRecommendationsHTML;
 
-            // Show the food suggestions container
             foodSuggestionsElement.style.opacity = 1;
             foodSuggestionsElement.style.animation = 'fadeInAnimation 2s ease-in-out forwards';
 
-            // Show the "Next Page" button
             document.querySelector('.next-page-button').style.display = 'block';
         }
 
