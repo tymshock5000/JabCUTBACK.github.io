@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,9 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #b2ebf2; /* Slightly darker shade of blue */
+            background-color: #b2ebf2; 
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease-in-out;
         }
 
         .start-screen {
@@ -21,16 +19,6 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            animation: fadeInAnimation 2s ease-in-out forwards;
-        }
-
-        @keyframes fadeInAnimation {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         .start-screen h1 {
@@ -39,8 +27,12 @@
             color: #333;
         }
 
-        .start-button,
-        .calculate-button {
+        .image-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        .start-button {
             background-color: navy;
             color: white;
             padding: 10px 20px;
@@ -51,9 +43,8 @@
             transition: background-color 0.3s ease-in-out;
         }
 
-        .start-button:hover,
-        .calculate-button:hover {
-            background-color: #001f3f; /* Darker shade of navy */
+        .start-button:hover {
+            background-color: #001f3f; 
         }
 
         .calculator-container {
@@ -65,50 +56,7 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            opacity: 0;
-            animation: slideInAnimation 2s ease-in-out forwards;
-        }
-
-        @keyframes slideInAnimation {
-            from {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .input-group:hover {
-            transform: translateY(-5px);
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .input-group input,
-        .input-group select {
-            width: calc(100% - 16px);
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            margin-top: 4px;
-            transition: border-color 0.3s ease-in-out;
-        }
-
-        .input-group input:focus,
-        .input-group select:focus {
-            border-color: #4caf50;
+            display: none;
         }
 
         .button-group {
@@ -129,107 +77,95 @@
         button:hover {
             background-color: #45a049;
         }
-
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-
-        .food-suggestions {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            opacity: 0;
-            animation: fadeInAnimation 2s ease-in-out forwards;
-        }
-
-        .food-suggestions ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        /* Style for the image container */
-        .image-container {
-            width: 50%;
-            left: 50%;
-            /* Adjust the width as needed */
-        }
     </style>
 </head>
-
 <body>
 
-    <div class="start-screen">
-        <h1>Welcome to J.A.B. Cutback</h1>
-        <!-- Image container -->
-        <div class="image-container">
-            <!-- Add the image of the fist below the title -->
-            <center><img src="C:\Users\Tymch\Downloads\download-removebg-preview.png" alt="Fist" style="width: 250px; height: auto;"></center>
-            <!-- End of image addition -->
+<div class="start-screen">
+    <div class="image-container">
+        <img src="images/fist.png" alt="Fist" style="width: 250px; height: auto;">
+    </div>
+    <button class="start-button" onclick="showCalculator()">Start</button>
+</div>
+
+<div class="calculator-container" id="calculator">
+    <h2>Calorie Calculator</h2>
+    <form id="calorieForm">
+        <div class="input-group">
+            <label for="age">Age: 14+</label>
+            <input type="number" id="age" name="age" required>
         </div>
-        <button class="start-button" onclick="showCalculator()">Start</button>
-    </div>
 
-    <div class="calculator-container" id="calculator" style="display: none;">
-        <h2>Calorie Calculator</h2>
-        <form id="calorieForm">
-            <div class="input-group">
-                <label for="age">Age: 14+</label>
-                <input type="number" id="age" name="age" required>
-            </div>
+        <div class="input-group">
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
 
-            <div class="input-group">
-                <label for="sex">Sex:</label>
-                <select id="sex" name="sex" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+        </div>
 
-            <div class="input-group">
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" name="height" required>
-            </div>
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+        </div>
 
-            <div class="input-group">
-                <label for="weight">Weight (kg):</label>
-                <input type="number" id="weight" name="weight" required>
-            </div>
+        <div class="input-group">
+            <label for="activityLevel">Activity Level:</label>
+            <select id="activityLevel" name="activityLevel" required>
+                <option value="1.2">Sedentary</option>
+                <option value="1.375">Light Exercise</option>
+                <option value="1.55">Moderate Exercise</option>
+                <option value="1.725">Active</option>
+                <option value="1.9">Very Active</option>
+            </select>
+        </div>
 
-            <div class="input-group">
-                <label for="activityLevel">Activity Level:</label>
-                <select id="activityLevel" name="activityLevel" required>
-                    <option value="1.2">Sedentary</option>
-                    <option value="1.375">Light Exercise</option>
-                    <option value="1.55">Moderate Exercise</option>
-                    <option value="1.725">Active</option>
-                    <option value="1.9">Very Active</option>
-                </select>
-            </div>
-
-            <right><div class="button-group">
-                <button class="calculate-button" type="button" onclick="calculateCalories()">Calculate</button>
-                <right><button class="next-page-button" type="button" style="display: none;" onclick="goToNextPage()">Next Page</button></right>
-            </div>
-            <div id="result" class="result"></div>
-
-            <div class="food
-            -suggestions" id="foodSuggestions"></div>
-        </form>
-    </div>
-
-    <div class="second-page-container" id="secondPage" style="display: none;">
-        <h2>Second Page</h2>
         <div class="button-group">
-            <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
+            <button class="calculate-button" type="button" onclick="calculateCalories()">Calculate</button>
         </div>
-    </div>
+    </form>
+</div>
 
-    <script>
-        const foodRecommendations = {
+<div class="second-page-container" id="secondPage" style="display: none;">
+    <h2>Second Page</h2>
+    <div class="button-group">
+        <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
+    </div>
+</div>
+
+<div class="result" id="result"></div>
+<div class="food-suggestions" id="foodSuggestions"></div>
+
+<script>
+    function showCalculator() {
+        document.getElementById('calculator').style.display = 'block';
+        document.querySelector('.start-screen').style.display = 'none';
+    }
+
+    function calculateCalories() {
+        var age = parseFloat(document.getElementById('age').value);
+        var sex = document.getElementById('sex').value;
+        var height = parseFloat(document.getElementById('height').value);
+        var weight = parseFloat(document.getElementById('weight').value);
+        var activityLevel = parseFloat(document.getElementById('activityLevel').value);
+
+        var bmr = (sex === 'male') ? 10 * weight + 6.25 * height - 5 * age + 5 : 10 * weight + 6.25 * height - 5 * age - 161;
+        var tdee = bmr * activityLevel;
+        var maintainCalories = tdee.toFixed(2);
+
+        var resultElement = document.getElementById('result');
+        resultElement.innerHTML = 'Maintain Calories: ' + maintainCalories + ' calories';
+
+        showFoodSuggestions(tdee);
+    }
+
+    function showFoodSuggestions(tdee) {
+        var foodRecommendations = {
             'maintain': [
                 'Oatmeal with fruits and nuts',
                 'Grilled chicken salad with quinoa',
@@ -270,67 +206,35 @@
             ]
         };
 
-        function showCalculator() {
-            document.getElementById('calculator').style.display = 'block';
-            document.querySelector('.start-screen').style.display = 'none';
+        var foodSuggestionsElement = document.getElementById('foodSuggestions');
+        foodSuggestionsElement.innerHTML = '';
+
+        var foodRecommendationsHTML = '<p>Food Recommendations:</p><ul>';
+        var goal = '';
+        if (tdee > 0 && tdee < 250) {
+            goal = 'maintain';
+        } else if (tdee >= 250 && tdee < 500) {
+            goal = 'midWeightLoss';
+        } else if (tdee >= 500 && tdee < 1000) {
+            goal = 'normalWeightLoss';
+        } else if (tdee >= 1000) {
+            goal = 'extremeWeightLoss';
         }
 
-        function calculateCalories() {
-            var age = parseFloat(document.getElementById('age').value);
-            var sex = document.getElementById('sex').value;
-            var height = parseFloat(document.getElementById('height').value);
-            var weight = parseFloat(document.getElementById('weight').value);
-            var activityLevel = parseFloat(document.getElementById('activityLevel').value);
-
-            // Updated BMR calculation
-            var bmr = (sex === 'male') ? 10 * weight + 6.25 * height - 5 * age + 5 : 10 * weight + 6.25 * height - 5 * age - 161;
-
-            var tdee = bmr * activityLevel;
-            var maintainCalories = tdee.toFixed(2);
-            var midWeightLossCalories = (tdee - 250).toFixed(2);
-            var normalWeightLossCalories = (tdee - 500).toFixed(2);
-            var extremeWeightLossCalories = (tdee - 1000).toFixed(2);
-
-            var resultElement = document.getElementById('result');
-            resultElement.innerHTML = 'Maintain Calories: ' + maintainCalories + ' calories<br>' +
-                'Mid Weight Loss Calories: ' + midWeightLossCalories + ' calories<br>' +
-                'Normal Weight Loss Calories: ' + normalWeightLossCalories + ' calories<br>' +
-                'Extreme Weight Loss Calories: ' + extremeWeightLossCalories + ' calories';
-
-            var foodSuggestionsElement = document.getElementById('foodSuggestions');
-            foodSuggestionsElement.innerHTML = '';
-
-            // Food recommendations
-            var foodRecommendationsHTML = '';
-            for (const goal in foodRecommendations) {
-                foodRecommendationsHTML += `<p>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</p><ul>`;
-                for (const food of foodRecommendations[goal]) {
-                    foodRecommendationsHTML += `<li>${food}</li>`;
-                }
-                foodRecommendationsHTML += '</ul>';
-            }
-
-            foodSuggestionsElement.innerHTML = foodRecommendationsHTML;
-
-            // Show the food suggestions container
-            foodSuggestionsElement.style.opacity = 1;
-            foodSuggestionsElement.style.animation = 'fadeInAnimation 2s ease-in-out forwards';
-
-            // Show the "Next Page" button
-            document.querySelector('.next-page-button').style.display = 'block';
+        for (var i = 0; i < foodRecommendations[goal].length; i++) {
+            foodRecommendationsHTML += '<li>' + foodRecommendations[goal][i] + '</li>';
         }
+        foodRecommendationsHTML += '</ul>';
 
-        function goToNextPage() {
-            document.getElementById('calculator').style.display = 'none';
-            document.getElementById('secondPage').style.display = 'block';
-        }
+        foodSuggestionsElement.innerHTML = foodRecommendationsHTML;
+        foodSuggestionsElement.style.display = 'block';
+    }
 
-        function goToPreviousPage() {
-            document.getElementById('calculator').style.display = 'block';
-            document.getElementById('secondPage').style.display = 'none';
-        }
-    </script>
+    function goToPreviousPage() {
+        document.getElementById('calculator').style.display = 'block';
+        document.getElementById('secondPage').style.display = 'none';
+    }
+</script>
 
 </body>
-
 </html>
