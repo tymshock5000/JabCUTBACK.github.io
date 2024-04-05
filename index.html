@@ -59,21 +59,6 @@
             display: none;
         }
 
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-
-        .food-suggestions {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            display: none;
-        }
-
         .button-group {
             text-align: center;
         }
@@ -91,15 +76,6 @@
 
         button:hover {
             background-color: #45a049;
-        }
-
-        @keyframes fadeInAnimation {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
     </style>
 </head>
@@ -162,9 +138,6 @@
         <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
     </div>
 </div>
-
-<div class="result" id="result"></div>
-<div class="food-suggestions" id="foodSuggestions"></div>
 
 <script>
     function showCalculator() {
