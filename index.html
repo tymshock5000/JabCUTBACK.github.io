@@ -111,7 +111,43 @@
             border-color: #4caf50;
         }
 
-        .button-group {
+        .button-group {<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+
+<body>
+
+    <!-- Your HTML content here -->
+
+    <div class="second-page-container" id="secondPage" style="display: none;">
+        <h2>Second Page</h2>
+        <div class="button-group">
+            <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
+        </div>
+    </div>
+
+    <script>
+        // Your JavaScript code here
+
+        function goToPreviousPage() {
+            document.getElementById('calculator').style.display = 'block';
+            document.getElementById('secondPage').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
+
             text-align: center;
         }
 
