@@ -304,7 +304,7 @@
             // Food recommendations
             var foodRecommendationsHTML = '';
             for (const goal in foodRecommendations) {
-                foodRecommendationsHTML += `<p>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</p><ul>`;
+                foodRecommendationsHTML += `<p><strong>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</strong></p><ul>`;
                 for (const food of foodRecommendations[goal]) {
                     foodRecommendationsHTML += `<li>${food}</li>`;
                 }
