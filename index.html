@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calorie Calculator</title>
+  <title>J.A.B. Cutback</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -158,6 +158,10 @@
             left: 50%;
             /* Adjust the width as needed */
         }
+
+        .second-page-container {
+            display: none;
+        }
     </style>
 </head>
 
@@ -222,8 +226,13 @@
         </form>
     </div>
 
-    <div class="second-page-container" id="secondPage" style="display: none;">
-        <h2>Second Page</h2>
+    <div class="second-page-container" id="secondPage">
+        <h2>Workout Program Details</h2>
+        <button class="show-text-button" onclick="showWorkoutDetails()">Show Details</button>
+        <div class="workout-details" id="workoutDetails" style="display: none;">
+            <p>Jab Cutback Workout program</p>
+            <!-- Insert other paragraphs as needed -->
+        </div>
         <div class="button-group">
             <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
         </div>
@@ -283,7 +292,6 @@
             var weight = parseFloat(document.getElementById('weight').value);
             var activityLevel = parseFloat(document.getElementById('activityLevel').value);
 
-            // Updated BMR calculation
             var bmr = (sex === 'male') ? 10 * weight + 6.25 * height - 5 * age + 5 : 10 * weight + 6.25 * height - 5 * age - 161;
 
             var tdee = bmr * activityLevel;
@@ -301,7 +309,6 @@
             var foodSuggestionsElement = document.getElementById('foodSuggestions');
             foodSuggestionsElement.innerHTML = '';
 
-            // Food recommendations
             var foodRecommendationsHTML = '';
             for (const goal in foodRecommendations) {
                 foodRecommendationsHTML += `<p><strong>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</strong></p><ul>`;
@@ -313,11 +320,9 @@
 
             foodSuggestionsElement.innerHTML = foodRecommendationsHTML;
 
-            // Show the food suggestions container
             foodSuggestionsElement.style.opacity = 1;
             foodSuggestionsElement.style.animation = 'fadeInAnimation 2s ease-in-out forwards';
 
-            // Show the "Next Page" button
             document.querySelector('.next-page-button').style.display = 'block';
         }
 
@@ -329,6 +334,11 @@
         function goToPreviousPage() {
             document.getElementById('calculator').style.display = 'block';
             document.getElementById('secondPage').style.display = 'none';
+        }
+
+        function showWorkoutDetails() {
+            document.getElementById('workoutDetails').style.display = 'block';
+            document.querySelector('.show-text-button').style.display = 'none';
         }
     </script>
 
