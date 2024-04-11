@@ -317,6 +317,63 @@
       ]
     };
 
+    class Exercise {
+        constructor(name, sets, reps, weight, rest) {
+            this.name = name;
+            this.sets = sets;
+            this.reps = reps;
+            this.weight = weight;
+            this.rest = rest;
+        }
+
+        performExercise() {
+            for (let set_num = 1; set_num <= this.sets; set_num++) {
+                console.log(`Set ${set_num} of ${this.name}: ${this.reps} reps at ${this.weight} lbs`);
+                console.log(`Resting for ${this.rest} minutes`);
+            }
+        }
+    }
+
+    const arms_shoulders_workout = [
+        new Exercise("Dumbbell Bicep Curls", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Skull Crushers", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Hammer Curls", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Standing Overhead Tricep Press", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Db Spider Curls", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Standing or Seated Dumbbell Shoulder Press", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Lateral Raises", 3, "10-12 reps", "weight your using", "2-4 mins"),
+    ];
+
+    const leg_workout = [
+        new Exercise("Bulgarian Split Squats", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Romanian Deadlifts", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Goblet Squats", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Calf Raises", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Hip Thrusts", 3, "10-12 reps", "weight your using", "2-4 mins"),
+    ];
+
+    const chest_workout = [
+        new Exercise("Dumbbell Flies", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Flat Bench Press", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Incline Press", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Pushups or Knee Pushups", 3, "10-12 reps", "weight your using", "2-4 mins"),
+    ];
+
+    const back_workout = [
+        new Exercise("Dumbbell Pullovers", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Single Arm Dumbbell Rows", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Standing Rows", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Single Arm Dumbbell Rows", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Shrugs", 3, "10-12 reps", "weight your using", "2-4 mins"),
+        new Exercise("Dumbbell Rear Delt Flies", 3, "10-12 reps", "weight your using", "2-4 mins"),
+    ];
+
+    const abs_exercises = [
+        "50 Cross Turn Crunches",
+        "30 Swimmers then 30 Russian Twists",
+        "30 Cross Leg Raises"
+    ];
+
     function showCalculator() {
       document.getElementById('calculator').style.display = 'block';
       document.querySelector('.start-screen').style.display = 'none';
