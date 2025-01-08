@@ -4,111 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Programs</title>
-    <style>
-        .workout-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .workout-program {
-            width: 45%;
-            border: 1px solid #ddd;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-
-        .button-group {
-            margin-bottom: 10px;
-        }
-
-        .workout-details {
-            display: none;
-        }
-    </style>
-    <script>
-        // Function to show or hide workout details
-        function showWorkoutDetails(detailsId) {
-            const details = document.getElementById(detailsId);
-            details.style.display = details.style.display === "none" ? "block" : "none";
-        }
-
-        function goToPreviousPage() {
-            alert("Go to the previous page logic here.");
-        }
-    </script>
+    <link rel="stylesheet" href="styles.css"> <!-- This links to your CSS file -->
 </head>
 <body>
-    <!-- First Page Content -->
-    <div id="firstPage" style="display: block;">
-        <div class="button-group">
-            <button class="next-page-button" type="button" onclick="navigateToSecondPage()">Next Page</button>
+    <div class="container">
+        <div class="workout left">
+            <h2>Workout Program 1</h2>
+            <ul>
+                <li>Exercise 1</li>
+                <li>Exercise 2</li>
+                <li>Exercise 3</li>
+                <!-- Add more exercises here if needed -->
+            </ul>
         </div>
-        <h1 style="font-size: 24px; font-weight: bold;">Welcome to the Workout Program</h1>
-        <p>This is your first page content. Click "Next Page" to view your workout programs.</p>
-    </div>
-
-    <!-- Second Page Content -->
-    <div id="secondPage" style="display: none;">
-        <div class="workout-container">
-            <!-- Left Side Workout Program -->
-            <div class="workout-program">
-                <div class="button-group">
-                    <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
-                </div>
-                <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program</h1>
-                <button class="workout-details-button" onclick="showWorkoutDetails('workoutDetailsLeft')">Workout Program Details</button>
-                <div class="workout-details" id="workoutDetailsLeft">
-                    <div class="workout-section">
-                        <h2>1st Day: Arms and Shoulders</h2>
-                        <p><strong>Bicep curls</strong>: 3 sets of 10-12 reps</p>
-                        <ul>
-                            <li>1st set: (weight you're using)</li>
-                            <li>2nd set: (weight you're using)</li>
-                            <li>3rd set: (weight you're using)</li>
-                        </ul>
-                        <!-- Continue adding other workout content -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side Workout Program -->
-            <div class="workout-program">
-                <div class="button-group">
-                    <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
-                </div>
-                <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program (Mirror)</h1>
-                <button class="workout-details-button" onclick="showWorkoutDetails('workoutDetailsRight')">Workout Program Details</button>
-                <div class="workout-details" id="workoutDetailsRight">
-                    <div class="workout-section">
-                        <h2>1st Day: Arms and Shoulders</h2>
-                        <p><strong>Bicep curls</strong>: 3 sets of 10-12 reps</p>
-                        <ul>
-                            <li>1st set: (weight you're using)</li>
-                            <li>2nd set: (weight you're using)</li>
-                            <li>3rd set: (weight you're using)</li>
-                        </ul>
-                        <!-- Continue adding other workout content -->
-                    </div>
-                </div>
-            </div>
+        <div class="workout right">
+            <h2>Workout Program 2</h2>
+            <ul>
+                <li>Exercise 1</li>
+                <li>Exercise 2</li>
+                <li>Exercise 3</li>
+                <!-- Add more exercises here if needed -->
+            </ul>
         </div>
     </div>
-
-    <script>
-        // Navigate between pages
-        function navigateToSecondPage() {
-            document.getElementById("firstPage").style.display = "none";
-            document.getElementById("secondPage").style.display = "block";
-        }
-
-        function goToPreviousPage() {
-            document.getElementById("secondPage").style.display = "none";
-            document.getElementById("firstPage").style.display = "block";
-        }
-    </script>
 </body>
 </html>
-
