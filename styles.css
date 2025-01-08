@@ -1,0 +1,59 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Container for holding both workout programs */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styles for each workout program */
+.workout {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 48%;
+}
+
+/* Specific styles for the left program (optional) */
+.workout.left {
+    text-align: left;
+}
+
+/* Specific styles for the right program (optional) */
+.workout.right {
+    text-align: left;
+    transform: scaleX(-1);  /* Mirror the right side */
+}
+
+/* Headings */
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Style for the list of exercises */
+ul {
+    list-style: none;
+}
+
+ul li {
+    background-color: #e0e0e0;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
