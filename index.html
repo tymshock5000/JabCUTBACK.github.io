@@ -192,6 +192,35 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: none;
         }
+        
+        .workout-container {
+  display: flex;
+  justify-content: space-between; /* Space between the two programs */
+  gap: 20px;
+}
+
+.workout-program {
+  width: 48%; /* Adjust to fit side by side with a small gap */
+  padding: 15px;
+  border: 1px solid #ddd; /* Optional: Add a border to distinguish */
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.workout-program h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.workout-program ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.workout-program li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
     </style>
 </head>
 
@@ -251,14 +280,223 @@
             <div class="food-suggestions" id="foodSuggestions"></div>
         </form>
     </div>
-
     <div class="second-page-container" id="secondPage" style="display: none;">
         <div class="button-group">
             <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
         </div>
         <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program</h1>
         <button class="workout-details-button" onclick="showWorkoutDetails()">Workout Program Details</button>
-        <div class="workout-details" id="workoutDetails" style="display: none;">
+        <div class="workout-details right" id="workoutDetails" style="display: none;">
+            <div class="workout-section">
+    <h2>1st day Arms and Shoulders</h2>
+    <p><strong>Bicep curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins, pause at top)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Dumbbell shoulder press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at high range, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Dumbbell hammer curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>lateral raises</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Spider curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Seated shoulder press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at bottom, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+                <!-- Continue in a similar format for all exercises in your list -->
+</div>
+
+
+
+<div class="workout-section">
+    <h2>2nd day Legs</h2>
+    
+    <p><strong>Bulgarian split squats</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Romanian Deadlifts</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Seated leg press</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Leg curls</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Leg extensions</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Barbell squats</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    
+    <p><strong>Calf raises</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+                <!-- Continue in a similar format for all exercises in your list -->
+</div>
+
+<div class="workout-section">
+    <h2>3rd day Chest</h2>
+    <p><strong>Flat dumbbell press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at bottom, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Cable flyes</strong>: 3 sets of 10-12 reps or to failure (pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>incline dumbell chest press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>chest press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>bench press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at high end, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>closer grip dumbell press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <!-- Continue in a similar format for all chest exercises -->
+</div>
+
+<div class="workout-section">
+    <h2>4th day Back</h2>
+    <p><strong>Pull-ups or Band assisted pull-ups</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>Barbell rows</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>lat pulldowns</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>seated rows</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>delt flys</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>close grip lat pulldown</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <p><strong>lateral raises</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
+    <ul>
+        <li>1st set: (weight you're using)</li>
+        <li>2nd set: (weight you're using)</li>
+        <li>3rd set: (weight you're using)</li>
+    </ul>
+    <!-- Continue in a similar format for all back exercises -->
+ </div>
+
+        
+<div class="workout-section">
+    <h2>5th day Abs</h2>
+    <p>50 Cross turn crunches</p>
+    <p>2 sets of weighted or normal planks for 2 minutes (rest 2-4 mins between each set)</p>
+    <p>2 sets of weighted Russian twists with a medicine ball (30 reps, slow and controlled, rest 2-4 mins)</p>
+</div>
+
+<div class="workout-section">
+    <h2>6th day Rest Day</h2>
+    <p>.</p>
+</div>
+
+<div class="workout-section">
+    <h2> 7th dayRest Day</h2>
+    <p>Then repeat.</p>
+</div>
+            
+    <div class="second-page-container" id="secondPage" style="display: none;">
+        <div class="button-group">
+            <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
+        </div>
+        <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program</h1>
+        <button class="workout-details-button" onclick="showWorkoutDetails()">Workout Program Details</button>
+        <div class="workout-details right" id="workoutDetails" style="display: none;">
             <div class="workout-section">
     <h2>1st day Arms and Shoulders</h2>
     <p><strong>Bicep curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins, pause at top)</p>
