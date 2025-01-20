@@ -1,599 +1,379 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Calculator and Workout Program</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #b2ebf2; /* Slightly darker shade of blue */
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease-in-out;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator and Workout Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #b2ebf2; /* Slightly darker shade of blue */
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease-in-out;
+    }
 
-        .start-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            animation: fadeInAnimation 2s ease-in-out forwards;
-        }
+    .start-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      animation: fadeInAnimation 2s ease-in-out forwards;
+    }
 
-        @keyframes fadeInAnimation {
-            from {
-                opacity: 0;
-            }
+    @keyframes fadeInAnimation {
+      from {
+        opacity: 0;
+      }
 
-            to {
-                opacity: 1;
-            }
-        }
+      to {
+        opacity: 1;
+      }
+    }
 
-        .start-screen h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .start-screen h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-        .start-button,
-        .calculate-button {
-            background-color: navy;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease-in-out;
-        }
+    .start-button,
+    .calculate-button {
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out;
+    }
 
-        .start-button:hover,
-        .calculate-button:hover {
-            background-color: #001f3f; /* Darker shade of navy */
-        }
+    .start-button:hover,
+    .calculate-button:hover {
+      background-color: #001f3f; /* Darker shade of navy */
+    }
 
-        .calculator-container {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            opacity: 0;
-            animation: slideInAnimation 2s ease-in-out forwards;
-        }
+    .calculator-container {
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      opacity: 0;
+      animation: slideInAnimation 2s ease-in-out forwards;
+    }
 
-        @keyframes slideInAnimation {
-            from {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
+    @keyframes slideInAnimation {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-        .input-group {
-            margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
+    .input-group {
+      margin-bottom: 15px;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .input-group:hover {
-            transform: translateY(-5px);
-        }
+    .input-group:hover {
+      transform: translateY(-5px);
+    }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-        .input-group input,
-        .input-group select {
-            width: calc(100% - 16px);
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            margin-top: 4px;
-            transition: border-color 0.3s ease-in-out;
-        }
+    .input-group input,
+    .input-group select {
+      width: calc(100% - 16px);
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-top: 4px;
+      transition: border-color 0.3s ease-in-out;
+    }
 
-        .input-group input:focus,
-        .input-group select:focus {
-            border-color: #4caf50;
-        }
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color: #4caf50;
+    }
 
-        .button-group {
-            text-align: center;
-        }
+    .button-group {
+      text-align: center;
+    }
 
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease-in-out;
-        }
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out;
+    }
 
-        button:hover {
-            background-color: #45a049;
-        }
+    button:hover {
+      background-color: #45a049;
+    }
 
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
 
-        .food-suggestions {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            opacity: 0;
-            animation: fadeInAnimation 2s ease-in-out forwards;
-        }
+    .food-suggestions {
+      text-align: left;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      opacity: 0;
+      animation: fadeInAnimation 2s ease-in-out forwards;
+    }
 
-        .food-suggestions ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
+    .food-suggestions ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
 
-        .image-container {
-            width: 50%;
-            left: 50%;
-        }
+    .image-container {
+      width: 50%;
+      left: 50%;
+    }
 
-        .second-page-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+    .second-page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-        .workout-details-button {
-            background-color: navy;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease-in-out;
-            margin-bottom: 20px;
-        }
+    .workout-details-button {
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out;
+      margin-bottom: 20px;
+    }
 
-        .workout-details-button:hover {
-            background-color: #001f3f; /* Darker shade of navy */
-        }
+    .workout-details-button:hover {
+      background-color: #001f3f; /* Darker shade of navy */
+    }
 
-        .workout-details {
-            text-align: left;
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-        
-        .workout-container {
-  display: flex;
-  justify-content: space-between; /* Space between the two programs */
-  gap: 20px;
-}
+    .workout-details {
+      text-align: left;
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
 
-.workout-program {
-  width: 48%; /* Adjust to fit side by side with a small gap */
-  padding: 15px;
-  border: 1px solid #ddd; /* Optional: Add a border to distinguish */
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
+    .workout-container {
+      display: flex;
+      justify-content: space-between; /* Space between the two programs */
+      gap: 20px;
+    }
 
-.workout-program h2 {
-  text-align: center;
-  font-size: 24px;
-}
+    .workout-program {
+      width: 48%; /* Adjust to fit side by side with a small gap */
+      padding: 15px;
+      border: 1px solid #ddd; /* Optional: Add a border to distinguish */
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
 
-.workout-program ul {
-  list-style-type: none;
-  padding: 0;
-}
+    .workout-program h2 {
+      text-align: center;
+      font-size: 24px;
+    }
 
-.workout-program li {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-    </style>
+    .workout-program ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .workout-program li {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="start-screen">
-        <h1>Welcome to J.A.B. Cutback</h1>
-        <div class="image-container">
-            <center><img src="images/download-removebg-preview.png" alt="Fist" style="width: 205px; height: auto;"></center>
-        </div>
-        <button class="start-button" onclick="showCalculator()">Start</button>
+  <div class="start-screen">
+    <h1>Welcome to J.A.B. Cutback</h1>
+    <div class="image-container">
+      <center><img src="images/download-removebg-preview.png" alt="Fist" style="width: 205px; height: auto;"></center>
     </div>
+    <button class="start-button" onclick="showCalculator()">Start</button>
+  </div>
 
-    <div class="calculator-container" id="calculator" style="display: none;">
-        <h2>Calorie Calculator</h2>
-        <form id="calorieForm">
-            <div class="input-group">
-                <label for="age">Age: 14+</label>
-                <input type="number" id="age" name="age" required>
-            </div>
+  <div class="calculator-container" id="calculator" style="display: none;">
+    <h2>Calorie Calculator</h2>
+    <form id="calorieForm">
+      <div class="input-group">
+        <label for="age">Age: 14+</label>
+        <input type="number" id="age" name="age" required>
+      </div>
 
-            <div class="input-group">
-                <label for="sex">Sex:</label>
-                <select id="sex" name="sex" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
+      <div class="input-group">
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
 
-            <div class="input-group">
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" name="height" required>
-            </div>
+      <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" required>
+      </div>
 
-            <div class="input-group">
-                <label for="weight">Weight (kg):</label>
-                <input type="number" id="weight" name="weight" required>
-            </div>
+      <div class="input-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+      </div>
 
-            <div class="input-group">
-                <label for="activityLevel">Activity Level:</label>
-                <select id="activityLevel" name="activityLevel" required>
-                    <option value="1.009">Sedentary</option>
-                    <option value="1.301">Light Exercise</option>
-                    <option value="1.50">Moderate Exercise</option>
-                    <option value="1.70">Active</option>
-                    <option value="1.8">Very Active</option>
-                </select>
-            </div>
+      <div class="input-group">
+        <label for="activityLevel">Activity Level:</label>
+        <select id="activityLevel" name="activityLevel" required>
+          <option value="1.009">Sedentary</option>
+          <option value="1.301">Light Exercise</option>
+          <option value="1.50">Moderate Exercise</option>
+          <option value="1.70">Active</option>
+          <option value="1.8">Very Active</option>
+        </select>
+      </div>
 
-            <div class="button-group">
-                <button class="calculate-button" type="button" onclick="calculateCalories()">Calculate</button>
-                <button class="next-page-button" type="button" style="display: none;" onclick="goToNextPage()">workout programs</button>
-            </div>
+      <div class="button-group">
+        <button class="calculate-button" type="button" onclick="calculateCalories()">Calculate</button>
+        <button class="next-page-button" type="button" style="display: none;" onclick="goToNextPage()">Workout Programs</button>
+      </div>
 
-            <div id="result" class="result"></div>
-            <div class="food-suggestions" id="foodSuggestions"></div>
-        </form>
+      <div id="result" class="result"></div>
+      <div class="food-suggestions" id="foodSuggestions"></div>
+    </form>
+  </div>
+
+  <div class="second-page-container" id="secondPage" style="display: none;">
+    <div class="button-group">
+      <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
     </div>
-    <div class="second-page-container" id="secondPage" style="display: none;">
-        <div class="button-group">
-            <button class="previous-page-button" type="button" onclick="goToPreviousPage()">Previous Page</button>
-        </div>
-        <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program</h1>
-        <button class="workout-details-button" onclick="showWorkoutDetails()">Workout Program Details</button>
-        <div class="workout-details right" id="workoutDetails" style="display: none;">
-            <div class="workout-section">
-                <!-- First Workout Program Content -->
-    <h2>1st day Arms and Shoulders</h2>
-    <p><strong>Bicep curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins, pause at top)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Dumbbell shoulder press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at high range, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Dumbbell hammer curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>lateral raises</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Spider curls</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Seated shoulder press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at bottom, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-                <!-- Continue in a similar format for all exercises in your list -->
-</div>
+    <h1 style="font-size: 24px; font-weight: bold;">Gym Workout Program</h1>
+    <button class="workout-details-button" onclick="showWorkoutDetails()">Workout Program Details</button>
+    <div class="workout-details right" id="workoutDetails" style="display: none;">
+      <!-- Add your workout program content here -->
+    </div>
+  </div>
 
+        <script>
+      const foodSuggestions = {
+        male: {
+          gain: ["Steak with brown rice", "Chicken with sweet potatoes", "Salmon and quinoa", "Peanut butter banana sandwich"],
+          lose: ["Chicken salad", "Egg white omelet", "Grilled fish with vegetables", "Greek yogurt with berries"]
+        },
+        female: {
+          gain: ["Grilled chicken with avocado", "Tofu stir-fry with quinoa", "Salmon with steamed veggies", "Nut butter on whole grain toast"],
+          lose: ["Grilled chicken with kale", "Greek yogurt with nuts", "Veggie-packed salad with chickpeas", "Grilled fish with quinoa"]
+        }
+      };
 
+      function showCalculator() {
+        document.querySelector('.start-screen').style.display = 'none';
+        document.getElementById('calculator').style.display = 'block';
+      }
 
-<div class="workout-section">
-    <h2>2nd day Legs</h2>
-    
-    <p><strong>Bulgarian split squats</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Romanian Deadlifts</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Seated leg press</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Leg curls</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Leg extensions</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Barbell squats</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    
-    <p><strong>Calf raises</strong>: 3 sets of 10-12 reps or to failure (pause at bottom, slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-                <!-- Continue in a similar format for all exercises in your list -->
-</div>
+      function calculateCalories() {
+        const age = parseInt(document.getElementById('age').value);
+        const sex = document.getElementById('sex').value;
+        const height = parseInt(document.getElementById('height').value);
+        const weight = parseInt(document.getElementById('weight').value);
+        const activityLevel = parseFloat(document.getElementById('activityLevel').value);
 
-<div class="workout-section">
-    <h2>3rd day Chest</h2>
-    <p><strong>Flat dumbbell press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at bottom, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Cable flyes</strong>: 3 sets of 10-12 reps or to failure (pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>incline dumbell chest press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>chest press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>bench press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at high end, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>closer grip dumbell press</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, pause at top, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <!-- Continue in a similar format for all chest exercises -->
-</div>
-
-<div class="workout-section">
-    <h2>4th day Back</h2>
-    <p><strong>Pull-ups or Band assisted pull-ups</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>Barbell rows</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>lat pulldowns</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>seated rows</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>delt flys</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>close grip lat pulldown</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <p><strong>lateral raises</strong>: 3 sets of 10-12 reps or to failure (slow and controlled, rest 2-4 mins)</p>
-    <ul>
-        <li>1st set: (weight you're using)</li>
-        <li>2nd set: (weight you're using)</li>
-        <li>3rd set: (weight you're using)</li>
-    </ul>
-    <!-- Continue in a similar format for all back exercises -->
- </div>
-
-        
-<div class="workout-section">
-    <h2>5th day Abs</h2>
-    <p>50 Cross turn crunches</p>
-    <p>2 sets of weighted or normal planks for 2 minutes (rest 2-4 mins between each set)</p>
-    <p>2 sets of weighted Russian twists with a medicine ball (30 reps, slow and controlled, rest 2-4 mins)</p>
-</div>
-
-<div class="workout-section">
-    <h2>6th day Rest Day</h2>
-    <p>.</p>
-</div>
-
-<div class="workout-section">
-    <h2> 7th dayRest Day</h2>
-    <p>Then repeat. rest days are always important so always take a minimun of 2 per week</p>
-</div>
-
-
-    <script>
-        const foodRecommendations = {
-            'maintain': [
-                'plain Oatmeal with fruits and nuts',
-                'Grilled chicken salad with quinoa',
-                'Baked salmon with roasted vegetables',
-                'Egg white omelette with spinach and mushrooms',
-                'Grilled shrimp skewers with steamed broccoli',
-                'Quinoa salad with chickpeas and mixed greens',
-                'Baked chicken breast with quinoa and asparagus',
-                'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
-            ],
-            'midWeightLoss': [
-                'Greek yogurt with berries and granola',
-                'Turkey and avocado wrap with whole wheat tortilla',
-                'Stir-fried tofu with mixed vegetables',
-                'Egg white omelette with spinach and mushrooms',
-                'Grilled shrimp skewers with steamed broccoli',
-                'Quinoa salad with chickpeas and mixed greens',
-                'Baked chicken breast with quinoa and asparagus',
-                'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
-            ],
-            'normalWeightLoss': [
-                'Egg white omelette with spinach and mushrooms',
-                'Grilled shrimp skewers with steamed broccoli',
-                'Quinoa salad with chickpeas and mixed greens',
-                'Baked chicken breast with quinoa and asparagus',
-                'Vegetable stir-fry with tofu and brown rice',
-                // Add more recommendations here
-            ],
-            'extremeWeightLoss': [
-                'Vegetable soup with lean protein (chicken, tofu)',
-                'Grilled fish with steamed vegetables',
-                'Lean turkey chili with beans and vegetables',
-                'Salad with grilled turkey breast and light vinaigrette',
-                'Cabbage and carrot slaw with grilled chicken',
-                // Add more recommendations here
-            ]
-        };
-
-        function showCalculator() {
-            document.getElementById('calculator').style.display = 'block';
-            document.querySelector('.start-screen').style.display = 'none';
+        if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+          alert("Please fill in all fields.");
+          return;
         }
 
-        function calculateCalories() {
-            var age = parseFloat(document.getElementById('age').value);
-            var sex = document.getElementById('sex').value;
-            var height = parseFloat(document.getElementById('height').value);
-            var weight = parseFloat(document.getElementById('weight').value);
-            var activityLevel = parseFloat(document.getElementById('activityLevel').value);
-
-            // Updated BMR calculation
-            var bmr = (sex === 'male') ? 10 * weight + 6.25 * height - 5 * age + 5 : 10 * weight + 6.25 * height - 5 * age - 161;
-
-            var tdee = bmr * activityLevel;
-            var maintainCalories = tdee.toFixed(2);
-            var midWeightLossCalories = (tdee - 250).toFixed(2);
-            var normalWeightLossCalories = (tdee - 500).toFixed(2);
-            var extremeWeightLossCalories = (tdee - 1000).toFixed(2);
-
-            var resultElement = document.getElementById('result');
-            resultElement.innerHTML = 'Maintain Calories: ' + maintainCalories + ' calories<br>' +
-                'Mid Weight Loss Calories: ' + midWeightLossCalories + ' calories<br>' +
-                'Normal Weight Loss Calories: ' + normalWeightLossCalories + ' calories<br>' +
-                'Extreme Weight Loss Calories: ' + extremeWeightLossCalories + ' calories';
-
-            var foodSuggestionsElement = document.getElementById('foodSuggestions');
-            foodSuggestionsElement.innerHTML = '';
-
-            var foodRecommendationsHTML = '';
-            for (const goal in foodRecommendations) {
-                foodRecommendationsHTML += `<p><strong>${goal.replace(/([A-Z])/g, ' $1').toLowerCase()} recommendations:</strong></p><ul>`;
-                for (const food of foodRecommendations[goal]) {
-                    foodRecommendationsHTML += `<li>${food}</li>`;
-                }
-                foodRecommendationsHTML += '</ul>';
-            }
-
-            foodSuggestionsElement.innerHTML = foodRecommendationsHTML;
-
-            foodSuggestionsElement.style.opacity = 1;
-            foodSuggestionsElement.style.animation = 'fadeInAnimation 2s ease-in-out forwards';
-
-            document.querySelector('.next-page-button').style.display = 'block';
+        let bmr;
+        if (sex === "male") {
+          bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+        } else {
+          bmr = 10 * weight + 6.25 * height - 5 * age - 161;
         }
 
-        function showWorkoutDetails() {
-            document.getElementById('workoutDetails').style.display = 'block';
-        }
+        const calorieNeeds = bmr * activityLevel;
 
-        function goToNextPage() {
-            document.getElementById('calculator').style.display = 'none';
-            document.getElementById('secondPage').style.display = 'block';
-        }
+        const goal = calorieNeeds >= 2500 ? "gain" : "lose"; // Assume calorie needs above 2500 are for gain
 
-        function goToPreviousPage() {
-            document.getElementById('calculator').style.display = 'block';
-            document.getElementById('secondPage').style.display = 'none';
-        }
+        document.getElementById('result').innerHTML = `Your daily calorie needs: ${calorieNeeds.toFixed(0)} kcal.`;
+        document.getElementById('foodSuggestions').innerHTML = `
+          <h3>Suggested Foods for ${goal}:</h3>
+          <ul>
+            ${foodSuggestions[sex][goal].map(food => `<li>${food}</li>`).join('')}
+          </ul>
+        `;
+
+        document.querySelector('.next-page-button').style.display = 'inline-block';
+      }
+
+      function goToNextPage() {
+        document.getElementById('secondPage').style.display = 'flex';
+        document.getElementById('calculator').style.display = 'none';
+      }
+
+      function goToPreviousPage() {
+        document.getElementById('secondPage').style.display = 'none';
+        document.getElementById('calculator').style.display = 'block';
+      }
+
+      function showWorkoutDetails() {
+        const workoutDetails = `
+          <h2>Muscle Building Program:</h2>
+          <ul>
+            <li>Day 1: Upper Body (Push/Pull)</li>
+            <li>Day 2: Lower Body (Legs/Glutes)</li>
+            <li>Day 3: Active Rest (Cardio, Core)</li>
+            <li>Day 4: Upper Body (Push/Pull)</li>
+            <li>Day 5: Full Body Workout</li>
+          </ul>
+          <h2>Fat Loss Program:</h2>
+          <ul>
+            <li>Day 1: Full Body Strength Training</li>
+            <li>Day 2: High-Intensity Interval Training (HIIT)</li>
+            <li>Day 3: Active Rest (Light cardio)</li>
+            <li>Day 4: Full Body Strength Training</li>
+            <li>Day 5: HIIT and Core Work</li>
+          </ul>
+        `;
+        document.getElementById('workoutDetails').style.display = 'block';
+        document.getElementById('workoutDetails').innerHTML = workoutDetails;
+      }
     </script>
 
 </body>
